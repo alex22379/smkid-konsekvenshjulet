@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S/M-KIDs Konsekvenshjul</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="flex flex-col min-h-dvh p-4 space-y-4 bg-gray-100">
+        <header>
+            <a class="flex gap-2 justify-center items-center" href="/"><img class="max-w-20"
+                    src="/assets/smkid_logo.png" alt="S/M-KIDs logo"><span
+                    class="font-extrabold text-3xl text-[#0F88BF]"
+                    style="font-variant:small-caps;">Konsekvenshjulet</span></a>
+        </header>
+        <main class="flex flex-col justify-center items-center flex-1">
+            <h1 style="display:none;">S/M-KIDs Konsekvenshjul</h1>
+            <div class="wheel-wrapper flex flex-col gap-4 justify-center items-center flex-1">
+                <div id="pointer-item" class="text-lg font-mono"><span class="italic">(Tryk på hjulet for at spinne 🌀)</span></div>
+                <div id="wheel" class="cursor-pointer hover:scale-101 h-[75dvh] shadow-xl shadow-black/15 aspect-square border-4 border-[#0F88BF] bg-white rounded-full overflow-hidden"></div>
+            </div>
+        </main>
+    </div>
+    <footer class="bg-gray-100 max-h-dvh flex flex-col">
+        <div class="p-4 flex flex-col flex-1 min-h-0">
+            <div id="log" class="text-gray-500 text-sm flex flex-col flex-1 min-h-0">
+                <h3 class="uppercase font-bold">Spinhistorik</h3>
+                <ul class="overflow-y-auto flex-1 min-h-0">
+                    <li>
+                        <p>Lorem</p>
+                    </li>
+                    <li>
+                        <p>ipsum</p>
+                    </li>
+                    <li>
+                        <p>dollar</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="credits" class="flex justify-center items-center py-2 px-4">
+            <a class="text-sm text-[#17285e]" href="https://alexandersandholdt.dk" target="_blank">
+                Udviklet af Alexander Sandholdt
+            </a>
+        </div>
+    </footer>
+</body>
+
+</html>
