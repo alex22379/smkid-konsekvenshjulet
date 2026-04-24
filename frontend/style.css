@@ -1,0 +1,24 @@
+#item {
+    position: relative;
+    z-index: 100;
+
+    --size: 1.25rem;
+    margin-bottom: calc(var(--size));
+
+    &::after {
+        content: '';
+        height: var(--size);
+        width: var(--size);
+        background-color: #1D2D49;
+        position: absolute;
+        bottom: calc(-1 * var(--size) / 2);
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+    }
+}
+
+#wheel {
+    &[data-spinning] {
+        cursor: not-allowed;
+    }
+}
