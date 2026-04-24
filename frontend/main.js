@@ -1,14 +1,12 @@
 async function fetchConsequencePool(n = 22) {
   const res = await fetch("/data/consequences.json");
   const data = await res.json();
-  console.log(data)
   return data;
 }
 
 const item = document.getElementById("item");
 const wheel = document.getElementById("wheel");
-
-// TODO: load wheel with pool of consequences
+const spinDuration = 2 // seconds
 
 wheel.addEventListener("click", () => spin());
 
@@ -33,19 +31,36 @@ async function loadWheel() {
     });
 }
 
+let degOffset = 0;
 function spin() {
   if (wheel.hasAttribute("data-spinning")) return;
 
-  const rndConsequence = consequencePool[Math.floor(Math.random() * consequencePool.length)];
+  const rndIndex = Math.floor(Math.random() * consequencePool.length);
+  const rndConsequence = consequencePool[rndIndex];
   console.log(`Random consequence: "${rndConsequence}"`);
 
+
+  //const degIncrement = 360 / n;
+  //const updateItemInterval = 0;
+  const spinDegrees = 360 * 5 + Math.floor(Math.random() * 360);
+  degOffset += spinDegrees + 360;
+
+  const totalSpins = getComputedStyle(document.documentElement).getPropertyValue("--total-spins").trim(); // num of different animations
+  document.documentElement.style.setProperty("--spin", `var(--spin${Math.floor(Math.random() * totalSpins)})`);
+  wheel.style.transform = `rotate(${degOffset}deg)`;
+
+  setTimeout(() => {
+      item.innerHTML = rndConsequence;
+  }, spinDuration * 1000 );
+
   wheel.setAttribute("data-spinning", null);
-
-  item.innerHTML = rndConsequence;
-
-  loadWheel()
+  setTimeout(() => {
+      wheel.removeAttribute("data-spinning");
+      loadWheel()
+  }, spinDuration * 1000 + 500);
 }
 
 // init
 loadWheel()
+document.documentElement.style.setProperty("--spin-duration", `${spinDuration}s`);
 // /init
