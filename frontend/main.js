@@ -2,7 +2,6 @@ const item = document.getElementById("item");
 const wheel = document.getElementById("wheel");
 
 // TODO: load wheel with pool of consequences
-// TODO: load consequence history
 
 wheel.addEventListener("click", () => spin());
 
@@ -16,6 +15,4 @@ function spin() {
 
     // TODO: notify server of consequence
 }
-
-// TODO: Listen to new consequences and update history
 
