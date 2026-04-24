@@ -4,6 +4,18 @@ async function fetchConsequencePool(n = 22) {
   return data;
 }
 
+function getConsequences(n = 13) {
+  const copy = [...consequencePool];
+
+  // Fisher–Yates shuffle
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+
+  return copy.slice(0, n);
+}
+
 const item = document.getElementById("item");
 const wheel = document.getElementById("wheel");
 const spinDuration = 2 // seconds
@@ -11,16 +23,17 @@ const spinDuration = 2 // seconds
 wheel.addEventListener("click", () => spin());
 
 let consequencePool = null;
+let currentConsequences = consequencePool;
 
 async function loadWheel() {
-    consequencePool = await fetchConsequencePool();
-    const n = consequencePool.length;
+    currentConsequences = await getConsequences();
+    const n = currentConsequences.length;
     document.documentElement.style.setProperty("--n", n);
     wheel.innerHTML = '';
 
     let i = 0;
     const degIncrement = 360 / n;
-    consequencePool.forEach((consequence) => {
+    currentConsequences.forEach((consequence) => {
       node = document.createElement('span');
       node.style.backgroundColor = `var(--clr-wheelItem${i % 8 + 1})`;
       node.style.transform = `translateX(-50%) rotate(${degIncrement*i}deg) `;
@@ -35,7 +48,7 @@ let degOffset = 0;
 function spin() {
   if (wheel.hasAttribute("data-spinning")) return;
 
-  const rndIndex = Math.floor(Math.random() * consequencePool.length);
+  const rndIndex = Math.floor(Math.random() * currentConsequences.length);
   const rndConsequence = consequencePool[rndIndex];
   console.log(`Random consequence: "${rndConsequence}"`);
 
@@ -57,10 +70,19 @@ function spin() {
   setTimeout(() => {
       wheel.removeAttribute("data-spinning");
       loadWheel()
-  }, spinDuration * 1000 + 500);
+  }, spinDuration * 1000 + 1000);
+}
+
+async function init() {
+  document.documentElement.style.setProperty("--spin-duration", `${spinDuration}s`);
+
+  const res = await fetch("/data/consequences.json");
+  const data = await res.json();
+  consequencePool = data;
+
+  loadWheel()
 }
 
 // init
-loadWheel()
-document.documentElement.style.setProperty("--spin-duration", `${spinDuration}s`);
+init();
 // /init
