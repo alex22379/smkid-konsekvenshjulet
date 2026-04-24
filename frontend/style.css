@@ -3,7 +3,7 @@
     z-index: 100;
 
     --size: 1.25rem;
-    margin-bottom: calc(var(--size));
+    margin-bottom: calc(var(--size)*1.2);
 
     &::after {
         content: '';
@@ -18,6 +18,9 @@
 }
 
 #wheel {
+    aspect-ratio: 1/1;
+    width: min(80dvh, 100%);
+
     &[data-spinning] {
         cursor: not-allowed;
     }
