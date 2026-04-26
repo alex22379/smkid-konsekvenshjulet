@@ -11,7 +11,7 @@
     --clr-wheelItem7: #008735;
     --clr-wheelItem8: #171749;
 
-    /* controlled by js */
+    /* controlled by main.js */
     --n: -1; 
     --spin-duration: -1; 
 
@@ -19,15 +19,9 @@
     --spin: -1;
     --spin1: cubic-bezier(0.12, 0.85, 0.18, 1);
     --spin2: cubic-bezier(0.08, 0.92, 0.25, 1);
-    --spin3: cubic-bezier(0.2, 0.7, 0.15, 1);
-    --spin4: cubic-bezier(0.05, 0.8, 0.2, 1);
-    --spin5: cubic-bezier(0.15, 0.95, 0.1, 1);
-    --spin6: cubic-bezier(0.1, 0.6, 0.2, 1);
-    --spin7: cubic-bezier(0.18, 0.9, 0.3, 1);
-    --spin8: cubic-bezier(0.05, 0.98, 0.15, 1);
-    --spin9: cubic-bezier(0.25, 0.75, 0.1, 1);
-    --spin10: cubic-bezier(0.09, 0.88, 0.22, 1);
-    --total-spins: 10;
+    --spin3: cubic-bezier(0.12, 0.9, 0.02, 1);
+    --spin4: cubic-bezier(0.05, 0.98, 0.01, 1);
+    --total-spins: 4;
 }
 
 #item {
@@ -35,7 +29,7 @@
     z-index: 100;
 
     --size: 1.25rem;
-    margin-bottom: calc(var(--size)*1.2);
+    margin-bottom: calc(var(--size)*0.2);
 
     &::after {
         content: '';
@@ -62,24 +56,27 @@
         cursor: not-allowed;
     }
 
-    span {
+    div {
         overflow: hidden;
-        text-wrap: pretty;
-        writing-mode: vertical-rl;
-        color: white;
-        text-align:center;
-        font-size:0.6em;
-        font-weight: 500;
-
-
         height:50%;
         width:calc(pi * var(--width) / var(--n) + 5px);
         position: absolute;
         clip-path: polygon(100% 0 , 50% 100% , 0 0 );
         display:flex;
-        align-items: center;
         justify-content: center;
         transform-origin: bottom;
         left: 50%;
+
+
+        span {
+            display: block;   
+            margin-top: 1.5em;    
+            text-wrap: pretty;
+            writing-mode: vertical-rl;
+            color: white;
+            font-size:0.6em;
+            font-weight: 500;
+            max-height: 35ch;
+        }
     }
 }
