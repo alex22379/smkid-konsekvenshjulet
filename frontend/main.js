@@ -85,7 +85,7 @@ function spin() {
   wheel.setAttribute("data-spinning", null);
   wheel.style.transform = `rotate(${degOffset}deg)`;
 
-  const interval = setInterval(updateCurrentConsequence, 1000 / 750 /* 75 HZ / FPS */); 
+  const interval = setInterval(updateCurrentConsequence, 1000 / 120 /* 75 HZ / FPS */); 
 
   setTimeout(() => {
     clearInterval(interval);
