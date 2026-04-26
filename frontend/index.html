@@ -31,13 +31,17 @@
         </header>
         <main class="flex flex-col justify-center items-center flex-1">
             <h1 style="display:none;">S/M-KIDs Konsekvenshjul</h1>
-            <div class="wheel-wrapper flex flex-col justify-center items-center flex-1 w-full drop-shadow-lg max-w-full overflow-hidden">
+            <div
+                class="wheel-wrapper flex flex-col justify-center items-center flex-1 w-full drop-shadow-lg max-w-full overflow-hidden">
                 <div id="item"
                     class="bg-(--clr-smkid2) py-3 px-4.5 text-white rounded text-xl font-mono max-w-[60ch] text-center">
                     <span class="italic">(Tryk på hjulet for at spinne 🌀)</span>
                 </div>
                 <div id="wheel"
                     class="relative cursor-pointer duration-75 border-4 border-white bg-white rounded-full overflow-hidden">
+                    <p class="loading grid place-items-center h-full text-black italic">
+                        Henter konsekvenser...
+                    </p>
                 </div>
             </div>
         </main>

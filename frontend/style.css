@@ -12,8 +12,8 @@
     --clr-wheelItem8: #171749;
 
     /* controlled by main.js */
-    --n: -1; 
-    --spin-duration: -1; 
+    --n: -1;
+    --spin-duration: -1;
 
     /* spins */
     --spin: -1;
@@ -58,23 +58,23 @@
 
     div {
         overflow: hidden;
-        height:50%;
-        width:calc(pi * var(--width) / var(--n) + 5px);
+        height: 50%;
+        width: calc(pi * var(--width) / var(--n) + 5px);
         position: absolute;
-        clip-path: polygon(100% 0 , 50% 100% , 0 0 );
-        display:flex;
+        clip-path: polygon(100% 0, 50% 100%, 0 0);
+        display: flex;
         justify-content: center;
         transform-origin: bottom;
         left: 50%;
 
 
         span {
-            display: block;   
-            margin-top: 1.5em;    
+            display: block;
+            margin-top: 1.5em;
             text-wrap: pretty;
             writing-mode: vertical-rl;
             color: white;
-            font-size:0.6em;
+            font-size: 0.6em;
             font-weight: 500;
             max-height: 35ch;
         }
